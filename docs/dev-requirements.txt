@@ -1,0 +1,6 @@
+black
+bump-my-version
+flake8
+isort
+requests
+setuptools
