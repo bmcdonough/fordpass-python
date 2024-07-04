@@ -7,7 +7,7 @@ _LOGGER = logging.getLogger(__name__)
 defaultHeaders = {
     'Accept': '*/*',
     'Accept-Language': 'en-us',
-    'User-Agent': 'fordpass-na/353 CFNetwork/1121.2.2 Darwin/19.3.0',
+    "User-Agent": "FordPass/23 CFNetwork/1408.0.4 Darwin/22.5.0",
     'Accept-Encoding': 'gzip, deflate, br',
 }
 
