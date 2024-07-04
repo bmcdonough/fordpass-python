@@ -2,6 +2,8 @@ import requests
 import logging
 import time
 
+_LOGGER = logging.getLogger(__name__)
+
 defaultHeaders = {
     'Accept': '*/*',
     'Accept-Language': 'en-us',
@@ -45,7 +47,7 @@ class Vehicle(object):
         r = requests.post('https://fcis.ice.ibmcloud.com/v1.0/endpoint/default/token', data=data, headers=headers)        
 
         if r.status_code == 200:
-            logging.info('Succesfully fetched token')
+            _LOGGER.info('Succesfully fetched token')
             result = r.json()
             self.token = result['access_token']
             self.expiresAt = time.time() + result['expires_in']
@@ -57,10 +59,10 @@ class Vehicle(object):
         '''Fetch and refresh token as needed'''
 
         if (self.token == None) or (time.time() >= self.expiresAt):
-            logging.info('No token, or has expired, requesting new token')
+            _LOGGER.info('No token, or has expired, requesting new token')
             self.auth()
         else:
-            logging.info('Token is valid, continuing')
+            _LOGGER.info('Token is valid, continuing')
             pass
     
     def status(self):
@@ -130,14 +132,14 @@ class Vehicle(object):
         status = self.__makeRequest('GET', f'{url}/{id}', None, None)
         result = status.json()
         if result['status'] == 552:
-            logging.info('Command is pending')
+            _LOGGER.info('Command is pending')
             time.sleep(5)
             return self.__pollStatus(url, id) # retry after 5s
         elif result['status'] == 200:
-            logging.info('Command completed succesfully')
+            _LOGGER.info('Command completed succesfully')
             return True
         else:
-            logging.info('Command failed')
+            _LOGGER.info('Command failed')
             return False
 
     def __requestAndPoll(self, method, url):
