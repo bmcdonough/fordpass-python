@@ -2,5 +2,6 @@ black
 bump-my-version
 flake8
 isort
+python-dotenv # dotenv
 requests
 setuptools
