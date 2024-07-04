@@ -5,7 +5,7 @@ Simple script to demo the API
 """
 
 import sys, os, logging, time
-from .fordpass import Vehicle
+from fordpass import Vehicle
 
 if __name__ == "__main__":
 
