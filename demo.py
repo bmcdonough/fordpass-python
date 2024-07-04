@@ -1,15 +1,19 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Simple script to demo the API
 """
 
-import sys, os, logging, time
+import logging
+import os
+import sys
+import time
+
 from fordpass import Vehicle
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 3:
         raise Exception('Must specify Username, Password and VIN as arguments, e.g. demo.py test@test.com password123 WX231231232')
     else:            
         r = Vehicle(sys.argv[1], sys.argv[2], sys.argv[3]) # Username, Password, VIN
