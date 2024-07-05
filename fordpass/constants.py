@@ -8,7 +8,7 @@ VEHICLE = "Ford Vehicle"
 
 REGION = "region"
 
-REGION_OPTIONS = ["Netherlands", "UK&Europe", "Australia", "USA", "Canada"]
+REGION_OPTIONS = ["UK&Europe", "Australia", "USA", "Canada"]
 DEFAULT_REGION = "USA"
 
 REGIONS = {
