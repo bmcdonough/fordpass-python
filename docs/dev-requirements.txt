@@ -5,3 +5,4 @@ isort
 python-dotenv # dotenv
 requests
 setuptools
+ssort
