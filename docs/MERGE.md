@@ -3,12 +3,14 @@
 ## pre-commit
 ### test
 ```shell
+ssort --check --diff filename
 isort --check --diff --profile black filename
 black --check --diff filename
 flake8 --show-source --max-line-length=88 --exclude __init__.py,types.py --extend-ignore=W605,F811,E402,E203 filename
 ```
 ### run
 ```shell
+ssort filename
 isort --profile black filename
 black filename
 flake8 --show-source --max-line-length=88 --exclude __init__.py,types.py --extend-ignore=W605,F811,E402,E203 filename
