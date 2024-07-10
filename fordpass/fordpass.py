@@ -5,6 +5,7 @@ import random
 import re
 import string
 import time
+from urllib.parse import urlencode, quote_plus
 from base64 import urlsafe_b64encode
 
 import requests
@@ -96,11 +97,13 @@ class Vehicle(object):
             self.url2["payload"]["Query String Parameters"]["p"] = self.url1["vars"]["SETTINGS"]["hosts"]["policy"]
             self.url2["payload"]["Form Data"] = {}
             self.url2["payload"]["Form Data"]["request_type"] = "RESPONSE"
-            self.url2["payload"]["Form Data"]["signInName"] = self.username
+            self.url2["payload"]["Form Data"]["signInName"] = quote_plus(self.username)
             self.url2["payload"]["Form Data"]["password"] = self.password
             self.url2["url"] = self.generate_url2()
 
-            r2 = session.post(self.url2["url"], data=, headers=headers)  # broken here
+#            data = urlencode(self.url2["payload"]["Form Data"], quote_via=quote_plus)
+            data = self.url2["payload"]["Form Data"]
+            r2 = session.post(self.url2["url"], json=data, headers=headers)  # broken here
 
             #                if "StateProperties" in script.
 
